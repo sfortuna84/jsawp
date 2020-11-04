@@ -18,50 +18,50 @@
           <div class="mdl-layout__header-row">
             <span class="mdl-layout__title">Lista</span>
             <div class="mdl-layout-spacer"></div>
-            <nav class="mdl-navigation">
-              <a class="mdl-navigation__link" href="#">Item 1</a>
-              <a class="mdl-navigation__link" href="#">Item 2</a>
-              <a class="mdl-navigation__link" href="#">Item 3</a>
-              <a class="mdl-navigation__link" href="#">Item 4</a>
-            </nav>
-
+            <div class="mdl-textfield mdl-js-textfield">
+              <input class="mdl-textfield__input" type="text" id="sample1">
+              <label class="mdl-textfield__label etiqueta" for="sample1">Agregar Item...</label>
+            </div>
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+                    id="btnAgregar">
+              +
+            </button>
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+                    id="btnDeshacer">
+              Deshacer
+            </button>
+            <div class="mdl-layout-spacer"></div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
                         mdl-textfield--floating-label mdl-textfield--align-right">
               <label class="mdl-button mdl-js-button mdl-button--icon"
-                     for="fixed-header-drawer-exp">
+                     for="inpBusqueda">
                 <i class="material-icons">search</i>
               </label>
               <div class="mdl-textfield__expandable-holder">
                 <input class="mdl-textfield__input" type="text" name="sample"
-                       id="fixed-header-drawer-exp">
+                       id="inpBusqueda"
+                       >
               </div>
             
           </div>
         </header>
         <div class="mdl-layout__drawer">
-          <span class="mdl-layout__title">Menu</span>
+          <span class="mdl-layout__title">Menu de Listas</span>
           <nav class="mdl-navigation">
-            <a class="mdl-navigation__link" href="#">SubItem 1</a>
-            <a class="mdl-navigation__link" href="#">SubItem 2</a>
-            <a class="mdl-navigation__link" href="#">SubItem 3</a>
+            <a class="mdl-navigation__link" href="#">Limpiar</a>
+            <a class="mdl-navigation__link" href="#">Guardar</a>
+            <a class="mdl-navigation__link" href="#">Cargar</a>
           </nav>
         </div>
         <main class="mdl-layout__content main-container">
-            <div class="lista">Lista de compras</div>
-            <div style="display: grid; justify-content: center; grid-template-columns: 25%;
-                        gap:10px; padding: 10px; box-sizing: border-box;">
-                <div class="mdl-card">
-                    <div class="mdl-card__title">
-                      <h2 class="mdl-card__title-text">Item 1</h2>
-                    </div>
-                    <div class="mdl-card__supporting-text">
-                      <div>Precio</div>
-                      <div>Cantidad</div>
-                    </div>
-                    <div class="mdl-card__actions">
-                      <a href="#">Borrar</a>
-                    </div>
+            <div id="galeria">
+                <div class="item">
+                  <div class="titulo">Garbanzos</div>  
+                  <div class="controles"></div>
+                  <div class="borrar">
+                    <a href="#" class="borrar">Eliminar</a>
                   </div>
+                </div>
             </div>
 
         </main>
@@ -69,5 +69,6 @@
 
 
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
