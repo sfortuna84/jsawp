@@ -19,8 +19,9 @@
             <span class="mdl-layout__title">Lista</span>
             <div class="mdl-layout-spacer"></div>
             <div class="mdl-textfield mdl-js-textfield">
-              <input class="mdl-textfield__input" type="text" id="sample1">
-              <label class="mdl-textfield__label etiqueta" for="sample1">Agregar Item...</label>
+              <input class="mdl-textfield__input" type="text" 
+                      id="inpAgregar">
+              <label class="mdl-textfield__label etiqueta" for="inpAgregar">Agregar Item...</label>
             </div>
             <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
                     id="btnAgregar">
@@ -48,20 +49,14 @@
         <div class="mdl-layout__drawer">
           <span class="mdl-layout__title">Menu de Listas</span>
           <nav class="mdl-navigation">
-            <a class="mdl-navigation__link" href="#">Limpiar</a>
-            <a class="mdl-navigation__link" href="#">Guardar</a>
-            <a class="mdl-navigation__link" href="#">Cargar</a>
+            <a class="mdl-navigation__link" href="#" id="linkLimpiar">Limpiar</a>
+            <a class="mdl-navigation__link" href="#" id="linkGuardar">Guardar</a>
+            <a class="mdl-navigation__link" href="#" id="linkCargar">Cargar</a>
           </nav>
         </div>
         <main class="mdl-layout__content main-container">
             <div id="galeria">
-                <div class="item">
-                  <div class="titulo">Garbanzos</div>  
-                  <div class="controles"></div>
-                  <div class="borrar">
-                    <a href="#" class="borrar">Eliminar</a>
-                  </div>
-                </div>
+
             </div>
 
         </main>
