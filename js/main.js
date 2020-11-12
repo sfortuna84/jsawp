@@ -12,6 +12,7 @@ let datos = [
 ];
 
 let datosPrevios = [];
+const rest = RESTClient('https://5fac7ad903a60500167e7ecf.mockapi.io/items');
 
 
 const btnAgregar = document.querySelector('#btnAgregar');
@@ -46,12 +47,15 @@ function render(lista = [{
     })
 }
 
-
-
 //Eventos
 
 document.addEventListener('DOMContentLoaded', ()=>{
-    render(datos);
+    
+    rest.get((json)=>{
+        datos = json;
+        render(datos);
+    })
+
 })
 
 btnAgregar.addEventListener('click', ()=>{
@@ -61,10 +65,15 @@ btnAgregar.addEventListener('click', ()=>{
         cantidad: 0,
         precio: 0
     });
+
+    rest.post(JSON.stringify({
+        titulo: inpAgregar.value,
+        cantidad: 0,
+        precio: 0,
+    }), p => console.log(p));
+
     render(datos);
     inpAgregar.value = '';
-    console.log('Datos Previos:', datosPrevios);
-    console.log('Datos actualizados', datos);
 });
 
 btnDeshacer.addEventListener('click', ()=>{
@@ -92,4 +101,7 @@ linkLimpiar.addEventListener('click', ()=>{
     datos = [];
     render(datos);
 })
+
+
+
 
