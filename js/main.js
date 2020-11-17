@@ -22,6 +22,14 @@ const inpAgregar = document.querySelector('#inpAgregar');
 const galeria = document.querySelector('#galeria');
 const linkLimpiar = document.querySelector('#linkLimpiar');
 
+// Workers
+
+let busquedaWorker = false;
+if (window.Worker) {
+    busquedaWorker = new Worker('workers/busqueda.worker.js');
+
+}
+
 // Funciones
 
 const template = ({ titulo, cantidad, precio }) => ` <div class="item">
@@ -84,15 +92,31 @@ btnDeshacer.addEventListener('click', ()=>{
 
 
 inpBusqueda.addEventListener('input', e => {
-    let vista = datos.filter((val)=>{
+    /* let vista = datos.filter((val)=>{
         if (val.titulo.includes(e.target.value)) {
             return true;
         }else{
             return false;
         }
-    });
+    }); */
 
-    render(vista); 
+    if (!busquedaWorker) {
+        let vista = datos.filter(val => val.titulo.includes(e.target.value));
+        render(vista);     
+    } else {
+        // uso el worker para filtrar los datos
+        console.log('Worker de busqueda registrado');
+        
+        busquedaWorker.postMessage({
+            datos,
+            filtro: e.target.value
+        });
+
+        busquedaWorker.addEventListener('message', e => {
+            console.log(e);
+            render(e.data);
+        });
+    }
 
 })
 

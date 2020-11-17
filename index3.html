@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <label for="numero1">Nro1</label>
+    <input type="number" name="numero1" id="numero1">
+    <br>
+    <label for="numero2">Nro2</label>
+    <input type="number" name="numero2" id="numero2">
+    <br>
+    <br>
+    <button type="button">Sumar</button>
+    <br>
+    <br>
+    <br>
+    <div id="respuesta"></div>
+
+
+    <script>
+        if (window.Worker) {
+            const calculadora = new Worker('calculadora.worker.js');
+            
+            document.querySelector('button').addEventListener('click', () => {
+                
+                const numero1 = Number (document.querySelector('#numero1').value);
+                const numero2 = Number (document.querySelector('#numero2').value);
+                
+                // Enviar peticiones (mensajes)
+                calculadora.postMessage({
+                    numero1,
+                    numero2
+                });
+            })
+
+            // Respuesta del mensaje
+            calculadora.addEventListener('message', e => {
+
+                document.querySelector('#respuesta').innerHTML = e.data;
+                
+                document.querySelector('#numero1').value = null;
+                document.querySelector('#numero2').value = null;
+            })
+
+        }else{
+            console.log('Warker no soportado');
+        }
+    </script>
+</body>
+</html>

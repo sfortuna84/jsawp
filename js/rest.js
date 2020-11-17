@@ -2,7 +2,7 @@ const RESTClient = function (endPoint) {
 
     function crearPeticion(url, metodo='GET', cpo = '') {
         return async function(completado){
-            if(window.Worker){
+            /* if(window.Worker){
                 //logica de programacion
             }else{
                 let rta;
@@ -17,7 +17,20 @@ const RESTClient = function (endPoint) {
     
                 let data = await rta.json();
                 completado(data);
-            }
+            } */
+
+                let rta;
+                if (metodo == 'GET') {
+                    rta = await fetch(url);
+                }else{
+                    rta = await fetch(url, {
+                        method: metodo,
+                        body: cpo
+                    });
+                }
+    
+                let data = await rta.json();
+                completado(data);
         }    
     }
 
