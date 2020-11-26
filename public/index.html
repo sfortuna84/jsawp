@@ -68,12 +68,26 @@
     <script src="js/rest.js"></script>
     <script src="js/main.js"></script>
     <script src="js/workers.js"></script>
+    <script src="urlB64ToUint8Array.js"></script>
     <script >
 
       if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('sw.js')
+        navigator.serviceWorker.register('sw_dev.js')
                   .then(rta => console.log('Service Worker registrado ', rta))
                   .catch(err => console.error(err));
+
+        reg.pushManager.subscribe({
+            applicationServerKey: urlB64ToUint8Array('BClseEwYjbIpfRbuSBpiOt09qSdgCuFdMqEaFARawSlo0WURIg-ceKhc7O4wU8ikHsJ_J-kkhk4v9ECHTPw8ld8'),
+            userVisibleOnly: true
+        }).then(sub => {
+          fetch('/subscribir', {
+            method: 'POST',
+            body: JSON.stringify(sub),
+            headers: {
+              'Content-type': 'application/json'
+            }
+          })
+        });
       }
 
     </script>
